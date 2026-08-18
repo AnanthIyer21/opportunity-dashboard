@@ -3,43 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Opportunity Radar — Ananth</title>
+<title>Opportunity Radar</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
 <style>
-  :root {
-    color-scheme: light;
-    --surface-1: #fcfcfb;
-    --page: #f9f9f7;
-    --text-primary: #0b0b0b;
-    --text-secondary: #52514e;
-    --muted: #898781;
-    --grid: #e1e0d9;
-    --baseline: #c3c2b7;
-    --border: rgba(11,11,11,0.10);
-    --t-internship: #2a78d6;
-    --t-hackathon: #eb6834;
-    --t-competition: #1baf7a;
-    --t-program: #eda100;
-    --t-event: #e87ba4;
-    --t-job: #008300;
-    --t-fellowship: #4a3aa7;
-    --s-good: #0ca30c;
-    --s-warning: #fab219;
-    --s-serious: #ec835a;
-    --s-critical: #d03b3b;
-    --chip-bg: #f0efec;
-    --card-shadow: 0 1px 2px rgba(11,11,11,0.05);
-  }
-  :root[data-theme="dark"] {
+  :root, :root[data-theme="dark"] {
     color-scheme: dark;
-    --surface-1: #1a1a19;
     --page: #0d0d0d;
-    --text-primary: #ffffff;
-    --text-secondary: #c3c2b7;
+    --surface: #1a1a19;
+    --surface-2: #222220;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
     --muted: #898781;
     --grid: #2c2c2a;
     --baseline: #383835;
     --border: rgba(255,255,255,0.10);
+    --accent: #3987e5;
     --t-internship: #3987e5;
     --t-hackathon: #d95926;
     --t-competition: #199e70;
@@ -47,126 +25,144 @@
     --t-event: #d55181;
     --t-job: #008300;
     --t-fellowship: #9085e9;
+    --s-good: #0ca30c;
+    --s-serious: #ec835a;
+    --s-critical: #d03b3b;
     --chip-bg: #262624;
-    --card-shadow: none;
+    --row-hover: #202020;
+    --row-sel: #1c2a3d;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-      --surface-1: #1a1a19;
-      --page: #0d0d0d;
-      --text-primary: #ffffff;
-      --text-secondary: #c3c2b7;
-      --muted: #898781;
-      --grid: #2c2c2a;
-      --baseline: #383835;
-      --border: rgba(255,255,255,0.10);
-      --t-internship: #3987e5;
-      --t-hackathon: #d95926;
-      --t-competition: #199e70;
-      --t-program: #c98500;
-      --t-event: #d55181;
-      --t-job: #008300;
-      --t-fellowship: #9085e9;
-      --chip-bg: #262624;
-      --card-shadow: none;
-    }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface: #fcfcfb;
+    --surface-2: #f0efec;
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --accent: #2a78d6;
+    --t-internship: #2a78d6;
+    --t-hackathon: #eb6834;
+    --t-competition: #1baf7a;
+    --t-program: #eda100;
+    --t-event: #e87ba4;
+    --t-job: #008300;
+    --t-fellowship: #4a3aa7;
+    --chip-bg: #f0efec;
+    --row-hover: #f4f3f0;
+    --row-sel: #e8f0fb;
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    background: var(--page);
-    color: var(--text-primary);
-    font-size: 14px;
-    line-height: 1.45;
+    margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--page); color: var(--ink); font-size: 14px; line-height: 1.45;
   }
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 24px 20px 80px; }
-  header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
-  h1 { font-size: 22px; margin: 0; letter-spacing: -0.2px; }
-  .sub { color: var(--text-secondary); font-size: 13px; }
-  .theme-btn {
-    background: var(--surface-1); border: 1px solid var(--border); color: var(--text-secondary);
-    border-radius: 8px; padding: 5px 10px; cursor: pointer; font-size: 13px;
-  }
+  a { color: var(--accent); }
+  .wrap { max-width: 1380px; margin: 0 auto; padding: 20px 20px 80px; }
+  header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  h1 { font-size: 21px; margin: 0; letter-spacing: -0.2px; }
+  .sub { color: var(--ink-2); font-size: 12.5px; }
+  .theme-btn { background: var(--surface); border: 1px solid var(--border); color: var(--ink-2);
+    border-radius: 8px; padding: 5px 10px; cursor: pointer; font-size: 13px; }
   /* stat tiles */
-  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 18px 0; }
-  .tile {
-    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
-    padding: 12px 14px; box-shadow: var(--card-shadow);
-  }
-  .tile .v { font-size: 26px; font-weight: 650; }
-  .tile .l { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 16px 0 14px; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; }
+  .tile .v { font-size: 24px; font-weight: 650; }
+  .tile .l { font-size: 11.5px; color: var(--ink-2); margin-top: 2px; }
   .tile.alert .v { color: var(--s-critical); }
-  /* filters */
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0 6px; }
+  /* closing soon strip */
+  .strip-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin: 0 0 6px; }
+  .strip { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 14px; scrollbar-width: thin; }
+  .strip .chip {
+    background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--s-critical);
+    border-radius: 8px; padding: 6px 12px; font-size: 11.5px; white-space: nowrap; cursor: pointer; color: var(--ink-2); flex: 0 0 auto;
+  }
+  .strip .chip b { display: block; color: var(--ink); font-size: 12px; max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
+  /* tabs */
+  .tabs { display: flex; gap: 2px; flex-wrap: wrap; border-bottom: 1px solid var(--grid); margin-bottom: 12px; }
+  .tab { padding: 8px 14px; font-size: 13px; color: var(--ink-2); cursor: pointer; border: 1px solid transparent;
+    border-radius: 8px 8px 0 0; margin-bottom: -1px; }
+  .tab.on { background: var(--surface); border-color: var(--border); border-bottom-color: var(--surface); color: var(--ink); font-weight: 600; }
+  .tab .n { color: var(--muted); font-size: 11.5px; margin-left: 4px; }
+  /* filter bar */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
   .filters input[type="search"] {
-    flex: 1 1 220px; min-width: 180px; padding: 8px 12px; border-radius: 8px;
-    border: 1px solid var(--baseline); background: var(--surface-1); color: var(--text-primary); font-size: 14px;
+    flex: 1 1 200px; min-width: 160px; padding: 8px 12px; border-radius: 8px;
+    border: 1px solid var(--baseline); background: var(--surface); color: var(--ink); font-size: 13.5px;
   }
   .filters select {
-    padding: 8px 10px; border-radius: 8px; border: 1px solid var(--baseline);
-    background: var(--surface-1); color: var(--text-primary); font-size: 13px;
+    padding: 7px 8px; border-radius: 8px; border: 1px solid var(--baseline);
+    background: var(--surface); color: var(--ink); font-size: 12.5px; max-width: 175px;
   }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 16px; }
-  .chip {
-    border: 1px solid var(--baseline); background: var(--surface-1); color: var(--text-secondary);
-    border-radius: 999px; padding: 4px 12px; font-size: 12.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  .toggle {
+    border: 1px solid var(--baseline); background: var(--surface); color: var(--ink-2);
+    border-radius: 999px; padding: 6px 13px; font-size: 12.5px; cursor: pointer;
   }
-  .chip .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-  .chip.on { background: var(--text-primary); color: var(--page); border-color: var(--text-primary); }
-  .count-line { color: var(--muted); font-size: 12.5px; margin: 0 0 10px; }
-  /* cards */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
-  .card {
-    background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
-    padding: 14px 16px; box-shadow: var(--card-shadow); display: flex; flex-direction: column; gap: 8px; position: relative;
-  }
-  .card.done { opacity: 0.55; }
-  .row1 { display: flex; align-items: flex-start; gap: 8px; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600;
-    color: var(--text-secondary); background: var(--chip-bg); border-radius: 6px; padding: 2px 8px; white-space: nowrap;
-  }
-  .badge .dot { width: 8px; height: 8px; border-radius: 50%; }
-  .new-badge { font-size: 11px; font-weight: 700; color: var(--s-good); border: 1px solid var(--s-good); border-radius: 6px; padding: 1px 6px; }
-  .card h3 { margin: 0; font-size: 15px; line-height: 1.3; }
-  .card h3 a { color: var(--text-primary); text-decoration: none; }
-  .card h3 a:hover { text-decoration: underline; }
-  .org { color: var(--text-secondary); font-size: 13px; }
-  .meta { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12.5px; color: var(--text-secondary); }
-  .meta .k { color: var(--muted); }
-  .deadline { font-weight: 600; }
-  .dl-critical { color: var(--s-critical); }
-  .dl-serious { color: var(--s-serious); }
-  .dl-warning { color: inherit; }
-  .notes { font-size: 12.5px; color: var(--text-secondary); border-top: 1px solid var(--grid); padding-top: 8px; margin-top: auto; }
-  .actions { display: flex; gap: 6px; margin-top: 2px; }
-  .actions button {
-    font-size: 12px; padding: 4px 10px; border-radius: 7px; cursor: pointer;
-    border: 1px solid var(--baseline); background: transparent; color: var(--text-secondary);
-  }
-  .actions button.active { background: var(--text-primary); color: var(--page); border-color: var(--text-primary); }
-  .apply-link {
-    margin-left: auto; font-size: 12.5px; font-weight: 600; text-decoration: none;
-    color: var(--t-internship); padding: 4px 2px;
-  }
+  .toggle.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .count-line { color: var(--muted); font-size: 12.5px; margin: 0 0 8px; }
+  /* table */
+  .tablewrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 900px; }
+  th { text-align: left; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px;
+    padding: 9px 12px; border-bottom: 1px solid var(--grid); cursor: pointer; user-select: none; white-space: nowrap; }
+  th.sorted { color: var(--ink); }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--grid); font-size: 12.5px; vertical-align: top; }
+  tr.row { cursor: pointer; }
+  tr.row:hover td { background: var(--row-hover); }
+  tr.row.sel td { background: var(--row-sel); }
+  tr.row.done td { opacity: 0.45; }
+  td .t { font-weight: 600; font-size: 13px; color: var(--ink); }
+  td .o { color: var(--ink-2); font-size: 11.5px; margin-top: 1px; }
+  .tag { display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 600;
+    background: var(--chip-bg); border-radius: 5px; padding: 2px 8px; color: var(--ink-2); white-space: nowrap; }
+  .tag .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .newb { font-size: 10px; font-weight: 700; color: var(--s-good); border: 1px solid var(--s-good);
+    border-radius: 5px; padding: 0 5px; margin-left: 6px; vertical-align: 1px; }
+  .curb { font-size: 10px; font-weight: 700; color: var(--t-fellowship); border: 1px solid var(--t-fellowship);
+    border-radius: 5px; padding: 0 5px; margin-left: 6px; vertical-align: 1px; }
+  .dl-critical { color: var(--s-critical); font-weight: 600; }
+  .dl-serious { color: var(--s-serious); font-weight: 600; }
+  .dim { color: var(--muted); }
+  .more-wrap { text-align: center; margin: 16px 0 0; }
+  .more-wrap button { background: var(--surface); border: 1px solid var(--baseline); color: var(--ink);
+    border-radius: 10px; padding: 10px 26px; font-size: 14px; cursor: pointer; }
   .empty { color: var(--muted); padding: 40px 0; text-align: center; }
-  .more-wrap { text-align: center; margin: 18px 0 0; }
-  .more-wrap button {
-    background: var(--surface-1); border: 1px solid var(--baseline); color: var(--text-primary);
-    border-radius: 10px; padding: 10px 26px; font-size: 14px; cursor: pointer;
+  footer { margin-top: 26px; color: var(--muted); font-size: 12px; }
+  /* detail drawer */
+  .scrim { position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none; transition: opacity .15s; z-index: 40; }
+  .scrim.open { opacity: 1; pointer-events: auto; }
+  .drawer {
+    position: fixed; top: 0; right: -520px; width: 500px; max-width: 94vw; height: 100vh; z-index: 50;
+    background: var(--surface); border-left: 1px solid var(--border); transition: right .18s ease;
+    overflow-y: auto; padding: 22px 24px 40px;
   }
-  .more-wrap button:hover { border-color: var(--text-primary); }
-  footer { margin-top: 28px; color: var(--muted); font-size: 12px; }
-  @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+  .drawer.open { right: 0; }
+  .drawer h2 { font-size: 18px; margin: 8px 0 4px; line-height: 1.3; }
+  .drawer .sub2 { color: var(--ink-2); font-size: 13px; margin-bottom: 14px; }
+  .drawer .close { float: right; background: none; border: 1px solid var(--border); color: var(--ink-2);
+    border-radius: 8px; width: 30px; height: 30px; cursor: pointer; font-size: 15px; }
+  .kv { display: grid; grid-template-columns: 105px 1fr; gap: 8px 12px; font-size: 13px; margin: 14px 0; }
+  .kv .k { color: var(--muted); }
+  .applybtn { background: var(--accent); color: #fff; border-radius: 9px; padding: 9px 20px; font-size: 14px;
+    font-weight: 600; text-decoration: none; display: inline-block; }
+  .drawer .actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; align-items: center; }
+  .actions button { font-size: 12.5px; padding: 6px 12px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--baseline); background: transparent; color: var(--ink-2); }
+  .actions button.active { background: var(--ink); color: var(--page); border-color: var(--ink); }
+  @media (max-width: 700px) {
+    .drawer { width: 100vw; max-width: 100vw; right: -100vw; }
+    .tiles { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div>
-      <h1>Opportunity Radar</h1>
+      <h1>🎯 Opportunity Radar</h1>
       <div class="sub" id="updatedLine">Loading…</div>
     </div>
     <button class="theme-btn" id="themeBtn">◐ Theme</button>
@@ -174,214 +170,397 @@
 
   <div class="tiles" id="tiles"></div>
 
+  <p class="strip-label">Closing soon</p>
+  <div class="strip" id="strip"></div>
+
+  <div class="tabs" id="tabs"></div>
+
   <div class="filters">
-    <input type="search" id="q" placeholder="Search title, org, location, notes…">
-    <select id="region">
-      <option value="">All regions</option>
+    <input type="search" id="q" placeholder="Search 4,000+ opportunities…">
+    <select id="cat"><option value="">Field: all</option></select>
+    <select id="region"><option value="">Region: all</option></select>
+    <select id="dl">
+      <option value="">Deadline: any</option>
+      <option value="7">Closing ≤ 7 days</option>
+      <option value="14">Closing ≤ 14 days</option>
+      <option value="30">Closing ≤ 30 days</option>
+      <option value="dated">Has a real deadline</option>
+      <option value="rolling">Rolling / TBA only</option>
     </select>
-    <select id="sort">
-      <option value="deadline">Sort: deadline soonest</option>
-      <option value="new">Sort: newest first</option>
-      <option value="org">Sort: organisation A–Z</option>
+    <select id="year">
+      <option value="">Year of study: any</option>
+      <option value="first">First-year friendly</option>
+      <option value="penultimate">Penultimate year</option>
+      <option value="final">Final year / grads</option>
+      <option value="open">Open to all years</option>
     </select>
+    <button class="toggle" id="visaT">Visa-friendly</button>
+    <button class="toggle" id="paidT">Paid / prize</button>
+    <button class="toggle" id="curT">✦ Curated only</button>
     <select id="mine">
       <option value="">Everything</option>
-      <option value="saved">★ Saved only</option>
-      <option value="applied">✓ Applied only</option>
-      <option value="unseen">Hide applied &amp; dismissed</option>
+      <option value="saved">★ Saved</option>
+      <option value="applied">✓ Applied</option>
+      <option value="unseen">Hide applied &amp; hidden</option>
     </select>
   </div>
-  <div class="chips" id="typeChips"></div>
 
   <p class="count-line" id="countLine"></p>
-  <div class="grid" id="grid"></div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr id="headRow"></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
   <div class="empty" id="empty" style="display:none">Nothing matches these filters.</div>
   <div class="more-wrap" id="moreWrap" style="display:none"><button id="moreBtn">Load more</button></div>
 
   <footer>
-    Auto-updated every morning at 07:30 by Claude · Deadlines shown in local time · ★/✓ tracking is stored in this browser only.
+    Auto-updated every morning: hand-verified research by Claude + live feeds (SimplifyJobs, Devpost, MLH, CTFtime, Codeforces, confs.tech, Zindi).
+    ★/✓ tracking stays in this browser. <span id="shareHint"></span>
   </footer>
 </div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer"></div>
 
 <script>
 const TYPE_META = {
   internship:  { label: "Internship",  color: "var(--t-internship)" },
   job:         { label: "Job",         color: "var(--t-job)" },
-  competition: { label: "Competition", color: "var(--t-competition)" },
   hackathon:   { label: "Hackathon",   color: "var(--t-hackathon)" },
+  competition: { label: "Competition", color: "var(--t-competition)" },
   event:       { label: "Event",       color: "var(--t-event)" },
   program:     { label: "Program",     color: "var(--t-program)" },
   fellowship:  { label: "Fellowship",  color: "var(--t-fellowship)" },
 };
+const CAT_LABEL = { quant: "Quant/Finance", swe: "Software", "ai-ml": "AI / ML / Data",
+  research: "Research", hackathon: "Hackathon", startup: "Startup", deeptech: "Deeptech", other: "Other" };
+const TABS = [
+  { key: "", label: "All" },
+  { key: "internship", label: "Internships" },
+  { key: "job", label: "Jobs" },
+  { key: "hackathon", label: "Hackathons" },
+  { key: "competition", label: "Competitions" },
+  { key: "event", label: "Events" },
+  { key: "progfellow", label: "Programs & Fellowships" },
+];
+const AUTO_PREFIX = /^(sj|dp|mlh|ctf|cf|conf|zn|kg)-[0-9a-f]/i;
+const PAGE_SIZE = 150;
 
 let DATA = { updated: "", opportunities: [] };
-const PAGE_SIZE = 120;
-let state = { q: "", types: new Set(), region: "", sort: "deadline", mine: "", shown: PAGE_SIZE };
+let state = { q: "", tab: "", cat: "", region: "", dl: "", year: "", visa: false, paid: false, cur: false,
+  mine: "", sort: "added", dir: -1, shown: PAGE_SIZE, sel: null };
 let track = {};
-try { track = JSON.parse(localStorage.getItem("opp-track") || "{}"); } catch(e) { track = {}; }
+try { track = JSON.parse(localStorage.getItem("opp-track") || "{}"); } catch(e) {}
 function saveTrack() { try { localStorage.setItem("opp-track", JSON.stringify(track)); } catch(e) {} }
 
-// theme toggle
-const themeBtn = document.getElementById("themeBtn");
-try {
-  const t = localStorage.getItem("opp-theme");
-  if (t) document.documentElement.dataset.theme = t;
-} catch(e) {}
-themeBtn.onclick = () => {
-  const cur = document.documentElement.dataset.theme ||
-    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  const next = cur === "dark" ? "light" : "dark";
+/* theme: dark default */
+try { const t = localStorage.getItem("opp-theme"); document.documentElement.dataset.theme = t || "dark"; }
+catch(e) { document.documentElement.dataset.theme = "dark"; }
+document.getElementById("themeBtn").onclick = () => {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
   document.documentElement.dataset.theme = next;
   try { localStorage.setItem("opp-theme", next); } catch(e) {}
 };
 
-function daysLeft(deadline) {
-  if (!deadline || !/^\d{4}-\d{2}-\d{2}$/.test(deadline)) return null;
-  const today = new Date(); today.setHours(0,0,0,0);
-  const d = new Date(deadline + "T23:59:59");
-  return Math.ceil((d - today) / 86400000);
-}
-
-function deadlineHtml(o) {
-  const dl = o.deadline;
-  if (!dl || dl === "TBA") return '<span class="deadline">Deadline TBA</span>';
-  if (dl === "Rolling") return '<span class="deadline">Rolling — apply early</span>';
-  const n = daysLeft(dl);
-  if (n === null) return '<span class="deadline">' + esc(dl) + '</span>';
-  if (n < 0) return '<span class="deadline" style="color:var(--muted)">Closed ' + esc(dl) + '</span>';
-  let cls = "", icon = "";
-  if (n <= 3) { cls = "dl-critical"; icon = "⛔ "; }
-  else if (n <= 7) { cls = "dl-serious"; icon = "⚠️ "; }
-  else if (n <= 14) { cls = "dl-warning"; icon = "⏳ "; }
-  const when = n === 0 ? "today!" : n === 1 ? "tomorrow" : "in " + n + " days";
-  return '<span class="deadline ' + cls + '">' + icon + esc(dl) + ' · closes ' + when + '</span>';
-}
-
 function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
-
-function sortKey(o) {
+function isCurated(o) { return !AUTO_PREFIX.test(o.id) && !/^(sj|dp|mlh|ctf|cf|conf|zn|kg)-\d/.test(o.id) && !(o.notes||"").startsWith("Auto-synced"); }
+function daysLeft(dl) {
+  if (!dl || !/^\d{4}-\d{2}-\d{2}$/.test(dl)) return null;
+  const today = new Date(); today.setHours(0,0,0,0);
+  return Math.ceil((new Date(dl + "T23:59:59") - today) / 86400000);
+}
+function eligText(o) { return ((o.eligibility||"") + " " + (o.notes||"")).toLowerCase(); }
+function yearMatch(o, y) {
+  const t = eligText(o);
+  const open = /all year|any year|open to (all|everyone|anyone)|no year|any experience level|18\+|students of all/.test(t);
+  if (y === "open") return open;
+  if (y === "first") return open || /first.?year|1st.?year|freshman|fresher|early.?year|1st\/2nd|spring (week|insight)|insight (day|program|week)/.test(t);
+  if (y === "penultimate") return open || /penultimat|sophomore standing|junior.?year|second.?to.?last|graduating (in )?20(28|29)/.test(t);
+  if (y === "final") return open || /final.?year|new.?grad|recent grad|graduating|graduate(s)? |grad (role|scheme|program)|senior/.test(t) || o.type === "job";
+  return true;
+}
+function visaMatch(o) {
+  const t = eligText(o);
+  if (/no visa sponsorship|not offer sponsorship|no sponsorship|citizenship (is )?required|us citizenship|work authorization required|must (hold|have) .*right to work/.test(t)) return false;
+  if (/sponsor/.test(t)) return true;
+  return /online|remote|worldwide|everywhere/i.test(o.location || "") || o.region === "Global";
+}
+function dlSortKey(o) {
   const n = daysLeft(o.deadline);
-  if (n !== null && n >= 0) return n;            // real future deadlines first, soonest first
+  if (n !== null && n >= 0) return n;
   if (o.deadline === "Rolling") return 5000;
-  if (n !== null && n < 0) return 9000;          // closed last
-  return 7000;                                    // TBA near the end
+  if (n !== null && n < 0) return 9000;
+  return 7000;
+}
+function deadlineCell(o) {
+  const dl = o.deadline;
+  if (!dl || dl === "TBA") return '<span class="dim">TBA</span>';
+  if (dl === "Rolling") return '<span class="dim">Rolling</span>';
+  const n = daysLeft(dl);
+  if (n === null) return esc(dl);
+  if (n < 0) return '<span class="dim">closed</span>';
+  const cls = n <= 7 ? "dl-critical" : n <= 21 ? "dl-serious" : "";
+  return '<span class="' + cls + '">' + esc(dl) + " · " + (n === 0 ? "today" : n + "d") + "</span>";
 }
 
-function render() {
-  const grid = document.getElementById("grid");
+function applyFilters() {
   const q = state.q.toLowerCase();
-  let list = DATA.opportunities.filter(o => {
-    if (state.types.size && !state.types.has(o.type)) return false;
+  return DATA.opportunities.filter(o => {
+    if (state.tab === "progfellow") { if (o.type !== "program" && o.type !== "fellowship") return false; }
+    else if (state.tab && o.type !== state.tab) return false;
+    if (state.cat && o.category !== state.cat) return false;
     if (state.region && o.region !== state.region) return false;
+    if (state.cur && !isCurated(o)) return false;
+    if (state.paid && !o.pay_or_prize) return false;
+    if (state.visa && !visaMatch(o)) return false;
+    if (state.year && !yearMatch(o, state.year)) return false;
+    if (state.dl) {
+      const n = daysLeft(o.deadline);
+      if (state.dl === "dated") { if (n === null || n < 0) return false; }
+      else if (state.dl === "rolling") { if (n !== null) return false; }
+      else { const lim = parseInt(state.dl); if (n === null || n < 0 || n > lim) return false; }
+    }
     const st = track[o.id] || {};
     if (state.mine === "saved" && !st.saved) return false;
     if (state.mine === "applied" && !st.applied) return false;
     if (state.mine === "unseen" && (st.applied || st.dismissed)) return false;
-    if (state.mine !== "unseen" && st.dismissed && state.mine === "") return false;
+    if (!state.mine && st.dismissed) return false;
     if (q) {
       const hay = [o.title, o.org, o.location, o.region, o.notes, o.eligibility, o.category, o.type].join(" ").toLowerCase();
       if (!hay.includes(q)) return false;
     }
     return true;
   });
+}
+function sortList(list) {
+  const s = state.sort, d = state.dir;
+  list.sort((a, b) => {
+    let r = 0;
+    if (s === "deadline") r = dlSortKey(a) - dlSortKey(b);
+    else if (s === "added") r = (a.added || "").localeCompare(b.added || "");
+    else if (s === "title") r = (a.title || "").localeCompare(b.title || "");
+    else if (s === "org") r = (a.org || "").localeCompare(b.org || "");
+    else if (s === "pay") r = (a.pay_or_prize ? 1 : 0) - (b.pay_or_prize ? 1 : 0);
+    return r * d || (a.title || "").localeCompare(b.title || "");
+  });
+  return list;
+}
 
-  if (state.sort === "deadline") list.sort((a,b) => sortKey(a) - sortKey(b));
-  else if (state.sort === "new") list.sort((a,b) => (b.added || "").localeCompare(a.added || ""));
-  else list.sort((a,b) => (a.org || "").localeCompare(b.org || ""));
+const COLS = [
+  { key: "title", label: "Opportunity" },
+  { key: "type", label: "Type", sortable: false },
+  { key: "cat", label: "Field", sortable: false },
+  { key: "loc", label: "Location", sortable: false },
+  { key: "deadline", label: "Deadline" },
+  { key: "pay", label: "Pay / Prize" },
+  { key: "added", label: "Added" },
+];
+function renderHead() {
+  document.getElementById("headRow").innerHTML = COLS.map(c => {
+    const sortable = c.sortable !== false;
+    const on = state.sort === c.key || (c.key === "title" && state.sort === "title");
+    const arrow = on ? (state.dir === 1 ? " ↑" : " ↓") : "";
+    return '<th data-k="' + c.key + '" class="' + (on ? "sorted" : "") + '"' +
+      (sortable ? "" : ' style="cursor:default"') + ">" + c.label + arrow + "</th>";
+  }).join("");
+  document.querySelectorAll("#headRow th").forEach(th => {
+    const k = th.dataset.k;
+    const col = COLS.find(c => c.key === k);
+    if (col.sortable === false) return;
+    th.onclick = () => {
+      if (state.sort === k) state.dir *= -1;
+      else { state.sort = k; state.dir = (k === "added") ? -1 : 1; }
+      state.shown = PAGE_SIZE; render();
+    };
+  });
+}
 
+function render() {
+  const list = sortList(applyFilters());
   const visible = list.slice(0, state.shown);
   document.getElementById("countLine").textContent =
-    "Showing " + visible.length + " of " + list.length + " matching (" +
-    DATA.opportunities.length + " total on the board)";
+    "Showing " + visible.length + " of " + list.length + " matching · " +
+    DATA.opportunities.length + " total on the board";
   document.getElementById("empty").style.display = list.length ? "none" : "block";
-  document.getElementById("moreWrap").style.display =
-    list.length > state.shown ? "block" : "none";
-  document.getElementById("moreBtn").textContent =
-    "Load more (" + (list.length - visible.length) + " remaining)";
+  document.getElementById("moreWrap").style.display = list.length > state.shown ? "block" : "none";
+  document.getElementById("moreBtn").textContent = "Load more (" + (list.length - visible.length) + " remaining)";
+  renderHead();
 
-  grid.innerHTML = visible.map(o => {
+  document.getElementById("tbody").innerHTML = visible.map(o => {
     const tm = TYPE_META[o.type] || { label: o.type, color: "var(--muted)" };
     const st = track[o.id] || {};
     const isNew = o.added === DATA.updated;
-    return `
-    <div class="card${st.applied ? " done" : ""}">
-      <div class="row1">
-        <span class="badge"><span class="dot" style="background:${tm.color}"></span>${tm.label}</span>
-        ${isNew ? '<span class="new-badge">NEW</span>' : ""}
-        <span style="margin-left:auto" class="badge">${esc(o.region)}</span>
-      </div>
-      <h3><a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.title)}</a></h3>
-      <div class="org">${esc(o.org)} · ${esc(o.location)}</div>
-      <div class="meta">
-        ${deadlineHtml(o)}
-        ${o.dates ? '<span><span class="k">When:</span> ' + esc(o.dates) + "</span>" : ""}
-        ${o.pay_or_prize ? '<span><span class="k">💰</span> ' + esc(o.pay_or_prize) + "</span>" : ""}
-      </div>
-      ${o.notes ? '<div class="notes">' + esc(o.notes) + "</div>" : ""}
-      <div class="actions">
-        <button data-act="saved" data-id="${esc(o.id)}" class="${st.saved ? "active" : ""}">★ Save</button>
-        <button data-act="applied" data-id="${esc(o.id)}" class="${st.applied ? "active" : ""}">✓ Applied</button>
-        <button data-act="dismissed" data-id="${esc(o.id)}" class="${st.dismissed ? "active" : ""}">✕ Hide</button>
-        <a class="apply-link" href="${esc(o.url)}" target="_blank" rel="noopener">Open ↗</a>
-      </div>
-    </div>`;
+    return '<tr class="row' + (st.applied ? " done" : "") + (state.sel === o.id ? " sel" : "") + '" data-id="' + esc(o.id) + '">' +
+      '<td><span class="t">' + esc(o.title) + '</span>' +
+        (isNew ? '<span class="newb">NEW</span>' : "") +
+        (isCurated(o) ? '<span class="curb" title="Hand-verified">✦</span>' : "") +
+        (st.saved ? ' ★' : "") +
+        '<div class="o">' + esc(o.org) + "</div></td>" +
+      '<td><span class="tag"><span class="dot" style="background:' + tm.color + '"></span>' + tm.label + "</span></td>" +
+      '<td class="dim">' + esc(CAT_LABEL[o.category] || o.category || "—") + "</td>" +
+      '<td class="dim">' + esc((o.location || "").split(";")[0].slice(0, 34)) + "</td>" +
+      "<td>" + deadlineCell(o) + "</td>" +
+      '<td class="dim">' + esc((o.pay_or_prize || "—").slice(0, 30)) + "</td>" +
+      '<td class="dim">' + esc(o.added || "") + "</td></tr>";
   }).join("");
+  document.querySelectorAll("#tbody tr.row").forEach(tr => {
+    tr.onclick = () => openDrawer(tr.dataset.id);
+  });
+  syncURL();
+}
 
-  grid.querySelectorAll("button[data-act]").forEach(b => {
-    b.onclick = () => {
-      const id = b.dataset.id, act = b.dataset.act;
-      track[id] = track[id] || {};
-      track[id][act] = !track[id][act];
-      saveTrack(); render(); renderTiles();
-    };
+function renderTabs() {
+  const counts = {};
+  DATA.opportunities.forEach(o => {
+    counts[o.type] = (counts[o.type] || 0) + 1;
+    if (o.type === "program" || o.type === "fellowship") counts.progfellow = (counts.progfellow || 0) + 1;
+  });
+  counts[""] = DATA.opportunities.length;
+  document.getElementById("tabs").innerHTML = TABS.map(t =>
+    '<div class="tab' + (state.tab === t.key ? " on" : "") + '" data-t="' + t.key + '">' + t.label +
+    '<span class="n">' + (counts[t.key] || 0).toLocaleString() + "</span></div>").join("");
+  document.querySelectorAll(".tab").forEach(el => {
+    el.onclick = () => { state.tab = el.dataset.t; state.shown = PAGE_SIZE; renderTabs(); render(); };
   });
 }
 
 function renderTiles() {
   const opps = DATA.opportunities;
-  const open = opps.filter(o => { const n = daysLeft(o.deadline); return n === null || n >= 0; });
   const closing = opps.filter(o => { const n = daysLeft(o.deadline); return n !== null && n >= 0 && n <= 14; });
   const fresh = opps.filter(o => o.added === DATA.updated);
-  const saved = opps.filter(o => (track[o.id] || {}).saved && !(track[o.id] || {}).applied);
+  const curated = opps.filter(isCurated);
   const applied = opps.filter(o => (track[o.id] || {}).applied);
-  document.getElementById("tiles").innerHTML = `
-    <div class="tile"><div class="v">${open.length}</div><div class="l">Open opportunities</div></div>
-    <div class="tile${closing.length ? " alert" : ""}"><div class="v">${closing.length}</div><div class="l">Closing within 14 days</div></div>
-    <div class="tile"><div class="v">${fresh.length}</div><div class="l">Added in latest update</div></div>
-    <div class="tile"><div class="v">${saved.length}</div><div class="l">★ Saved, not yet applied</div></div>
-    <div class="tile"><div class="v">${applied.length}</div><div class="l">✓ Applications sent</div></div>`;
+  document.getElementById("tiles").innerHTML =
+    '<div class="tile"><div class="v">' + opps.length.toLocaleString() + '</div><div class="l">Opportunities</div></div>' +
+    '<div class="tile' + (closing.length ? " alert" : "") + '"><div class="v">' + closing.length + '</div><div class="l">Closing ≤ 14 days</div></div>' +
+    '<div class="tile"><div class="v">' + fresh.length.toLocaleString() + '</div><div class="l">Added in latest update</div></div>' +
+    '<div class="tile"><div class="v">' + curated.length + '</div><div class="l">✦ Hand-verified</div></div>' +
+    '<div class="tile"><div class="v">' + applied.length + '</div><div class="l">✓ Applications sent</div></div>';
 }
 
-function renderChips() {
-  const counts = {};
-  DATA.opportunities.forEach(o => counts[o.type] = (counts[o.type] || 0) + 1);
-  const el = document.getElementById("typeChips");
-  el.innerHTML = Object.keys(TYPE_META).filter(t => counts[t]).map(t => {
-    const tm = TYPE_META[t];
-    return `<button class="chip${state.types.has(t) ? " on" : ""}" data-type="${t}">
-      <span class="dot" style="background:${tm.color}"></span>${tm.label} · ${counts[t]}</button>`;
-  }).join("");
-  el.querySelectorAll(".chip").forEach(c => {
-    c.onclick = () => {
-      const t = c.dataset.type;
-      state.types.has(t) ? state.types.delete(t) : state.types.add(t);
-      state.shown = PAGE_SIZE;
-      renderChips(); render();
+function renderStrip() {
+  const soon = DATA.opportunities
+    .filter(o => { const n = daysLeft(o.deadline); return n !== null && n >= 0 && !(track[o.id]||{}).dismissed; })
+    .sort((a, b) => daysLeft(a.deadline) - daysLeft(b.deadline)).slice(0, 12);
+  document.getElementById("strip").innerHTML = soon.map(o => {
+    const n = daysLeft(o.deadline);
+    return '<div class="chip" data-id="' + esc(o.id) + '"><b>' + esc(o.title) + "</b>" +
+      (n === 0 ? "closes today" : n === 1 ? "closes tomorrow" : n + " days left") + "</div>";
+  }).join("") || '<span class="dim">No dated deadlines upcoming.</span>';
+  document.querySelectorAll(".strip .chip").forEach(c => { c.onclick = () => openDrawer(c.dataset.id); });
+}
+
+function renderSelectors() {
+  const cats = [...new Set(DATA.opportunities.map(o => o.category).filter(Boolean))].sort();
+  document.getElementById("cat").innerHTML = '<option value="">Field: all</option>' +
+    cats.map(c => '<option value="' + esc(c) + '"' + (state.cat === c ? " selected" : "") + ">" + esc(CAT_LABEL[c] || c) + "</option>").join("");
+  const regions = [...new Set(DATA.opportunities.map(o => o.region).filter(Boolean))].sort();
+  document.getElementById("region").innerHTML = '<option value="">Region: all</option>' +
+    regions.map(r => '<option' + (state.region === r ? " selected" : "") + ">" + esc(r) + "</option>").join("");
+}
+
+function openDrawer(id) {
+  const o = DATA.opportunities.find(x => x.id === id);
+  if (!o) return;
+  state.sel = id;
+  const tm = TYPE_META[o.type] || { label: o.type, color: "var(--muted)" };
+  const st = track[o.id] || {};
+  document.getElementById("drawer").innerHTML =
+    '<button class="close" id="dClose">✕</button>' +
+    '<span class="tag"><span class="dot" style="background:' + tm.color + '"></span>' + tm.label + "</span> " +
+    '<span class="tag">' + esc(o.region) + "</span>" +
+    (isCurated(o) ? ' <span class="tag" style="color:var(--t-fellowship)">✦ hand-verified</span>' : "") +
+    "<h2>" + esc(o.title) + "</h2>" +
+    '<div class="sub2">' + esc(o.org) + " · " + esc(o.location) + "</div>" +
+    '<a class="applybtn" href="' + esc(o.url) + '" target="_blank" rel="noopener">Apply / details ↗</a>' +
+    '<div class="kv">' +
+    '<div class="k">Deadline</div><div>' + deadlineCell(o) + "</div>" +
+    (o.dates ? '<div class="k">When</div><div>' + esc(o.dates) + "</div>" : "") +
+    (o.pay_or_prize ? '<div class="k">Pay / prize</div><div>' + esc(o.pay_or_prize) + "</div>" : "") +
+    (o.eligibility ? '<div class="k">Eligibility</div><div>' + esc(o.eligibility) + "</div>" : "") +
+    (o.notes ? '<div class="k">Notes</div><div>' + esc(o.notes) + "</div>" : "") +
+    '<div class="k">Field</div><div>' + esc(CAT_LABEL[o.category] || o.category || "—") + "</div>" +
+    '<div class="k">Added</div><div>' + esc(o.added || "—") + "</div>" +
+    "</div>" +
+    '<div class="actions">' +
+    '<button data-act="saved" class="' + (st.saved ? "active" : "") + '">★ Save</button>' +
+    '<button data-act="applied" class="' + (st.applied ? "active" : "") + '">✓ Applied</button>' +
+    '<button data-act="dismissed" class="' + (st.dismissed ? "active" : "") + '">✕ Hide</button>' +
+    "</div>";
+  document.getElementById("drawer").classList.add("open");
+  document.getElementById("scrim").classList.add("open");
+  document.getElementById("dClose").onclick = closeDrawer;
+  document.querySelectorAll("#drawer .actions button").forEach(b => {
+    b.onclick = () => {
+      track[id] = track[id] || {};
+      track[id][b.dataset.act] = !track[id][b.dataset.act];
+      saveTrack(); openDrawer(id); renderTiles(); render();
     };
   });
+  render();
+}
+function closeDrawer() {
+  state.sel = null;
+  document.getElementById("drawer").classList.remove("open");
+  document.getElementById("scrim").classList.remove("open");
+  render();
+}
+document.getElementById("scrim").onclick = closeDrawer;
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+/* shareable filter URLs */
+function syncURL() {
+  const p = new URLSearchParams();
+  if (state.q) p.set("q", state.q);
+  if (state.tab) p.set("type", state.tab);
+  if (state.cat) p.set("field", state.cat);
+  if (state.region) p.set("region", state.region);
+  if (state.dl) p.set("dl", state.dl);
+  if (state.year) p.set("year", state.year);
+  if (state.visa) p.set("visa", "1");
+  if (state.paid) p.set("paid", "1");
+  if (state.cur) p.set("curated", "1");
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? "?" + qs : location.pathname);
+  document.getElementById("shareHint").textContent = qs ? "This URL captures your current filters — share it." : "";
+}
+function loadURL() {
+  const p = new URLSearchParams(location.search);
+  state.q = p.get("q") || "";
+  state.tab = p.get("type") || "";
+  state.cat = p.get("field") || "";
+  state.region = p.get("region") || "";
+  state.dl = p.get("dl") || "";
+  state.year = p.get("year") || "";
+  state.visa = p.get("visa") === "1";
+  state.paid = p.get("paid") === "1";
+  state.cur = p.get("curated") === "1";
+  document.getElementById("q").value = state.q;
+  document.getElementById("dl").value = state.dl;
+  document.getElementById("year").value = state.year;
+  document.getElementById("visaT").classList.toggle("on", state.visa);
+  document.getElementById("paidT").classList.toggle("on", state.paid);
+  document.getElementById("curT").classList.toggle("on", state.cur);
 }
 
-function renderRegions() {
-  const regions = [...new Set(DATA.opportunities.map(o => o.region))].sort();
-  const sel = document.getElementById("region");
-  sel.innerHTML = '<option value="">All regions</option>' +
-    regions.map(r => `<option>${esc(r)}</option>`).join("");
-}
-
+/* filter events */
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; state.shown = PAGE_SIZE; render(); });
+document.getElementById("cat").addEventListener("change", e => { state.cat = e.target.value; state.shown = PAGE_SIZE; render(); });
 document.getElementById("region").addEventListener("change", e => { state.region = e.target.value; state.shown = PAGE_SIZE; render(); });
-document.getElementById("sort").addEventListener("change", e => { state.sort = e.target.value; state.shown = PAGE_SIZE; render(); });
+document.getElementById("dl").addEventListener("change", e => { state.dl = e.target.value; state.shown = PAGE_SIZE; render(); });
+document.getElementById("year").addEventListener("change", e => { state.year = e.target.value; state.shown = PAGE_SIZE; render(); });
 document.getElementById("mine").addEventListener("change", e => { state.mine = e.target.value; state.shown = PAGE_SIZE; render(); });
+["visaT", "paidT", "curT"].forEach(id => {
+  const map = { visaT: "visa", paidT: "paid", curT: "cur" };
+  document.getElementById(id).addEventListener("click", () => {
+    state[map[id]] = !state[map[id]];
+    document.getElementById(id).classList.toggle("on", state[map[id]]);
+    state.shown = PAGE_SIZE; render();
+  });
+});
 document.getElementById("moreBtn").addEventListener("click", () => { state.shown += PAGE_SIZE * 2; render(); });
 
 fetch("opportunities.json?v=" + Date.now())
@@ -389,12 +568,11 @@ fetch("opportunities.json?v=" + Date.now())
   .then(d => {
     DATA = d;
     document.getElementById("updatedLine").textContent =
-      "Jobs · internships · competitions · hackathons · events — last updated " + d.updated;
-    renderTiles(); renderChips(); renderRegions(); render();
+      "Internships · jobs · hackathons · competitions · events · programs · fellowships — updated " + d.updated;
+    loadURL();
+    renderTiles(); renderStrip(); renderTabs(); renderSelectors(); render();
   })
-  .catch(() => {
-    document.getElementById("updatedLine").textContent = "Could not load opportunities.json";
-  });
+  .catch(() => { document.getElementById("updatedLine").textContent = "Could not load opportunities.json"; });
 </script>
 </body>
 </html>
